@@ -30,7 +30,7 @@
                     </div>
                     
                     <div class="text-white-50 small">
-                        © 2026 Sistema Integral de Información Académica.
+                        © 2026 Sistema Integral de Inscripción y Administración Curricular.
                     </div>
                 </div>
             </div>
