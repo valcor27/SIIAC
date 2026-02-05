@@ -1,6 +1,13 @@
 import { gsap } from 'gsap';
 
 document.addEventListener('DOMContentLoaded', () => {
+    gsap.from(".hero-content > *", {
+        duration: 1,
+        x: -50,
+        opacity: 0,
+        stagger: 0.2,
+        ease: "back.out(1.7)"
+    }); 
     const canvas = document.getElementById('particleCanvas');
     if (!canvas) return;
 
@@ -103,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     gsap.ticker.add(() => {
         ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
-        const time = Date.now() * 0.0005;
+        const time = Date.now() * 0.0008;
         connect();
         particles.forEach(p => { p.update(time); p.draw(); });
     });

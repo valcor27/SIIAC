@@ -4,7 +4,6 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>SIIAC - Acceso Institucional</title>
-
     @vite(['resources/css/app.scss', 'resources/css/login.scss', 'resources/js/app.js', 'resources/js/login.js'])
 </head>
 <body class="bg-light font-family: 'Lexend', sans-serif" >
