@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <link rel="icon" type="image/png" href="{{ asset('images/logo_icon_white.png') }}">
     <meta charset="UTF-8">
     <title>@yield('title', 'Mi primer proyecto')</title>
 
