@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 text: "Error en la autenticación: " + error,
                 duration: 4000,
                 close: true,
-                gravity: "bottom",
+                gravity: "top",
                 position: "right",
                 style: {
                     background: "#B94558",
