@@ -3,6 +3,27 @@ import Toastify from 'toastify-js';
 import 'toastify-js/src/toastify.css';
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Mostrar errores con Toastify
+    const loginForm = document.querySelector('form');
+    const errors = JSON.parse(loginForm.getAttribute('data-errors') || '[]');
+    
+    if (errors.length > 0) {
+        errors.forEach(error => {
+            Toastify({
+                text: "Error en la autenticación: " + error,
+                duration: 4000,
+                close: true,
+                gravity: "bottom",
+                position: "right",
+                style: {
+                    background: "#B94558",
+                    borderRadius: "8px",
+                    fontFamily: "Lexend, sans-serif"
+                }
+            }).showToast();
+        });
+    }
+
     const togglePasswordBtn = document.getElementById('togglePassword');
     const passwordInput = document.getElementById('password');
     
@@ -137,18 +158,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('resize', init);
     init();
-
-    // Toast notification example
-    Toastify({
-        text: "Event start time cannot be earlier than 8am",
-        duration: 3000,
-        close: true,
-        gravity: "bottom",
-        position: "right",
-        style: {
-            background: "#B94558",
-            borderRadius: "8px",
-            fontFamily: "Lexend, sans-serif"
-        }
-    }).showToast();
 });

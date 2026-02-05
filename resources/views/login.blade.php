@@ -52,7 +52,7 @@
                     <p class="text-muted">Por favor, introduce tus credenciales institucionales.</p>
                 </div>
 
-                <form action="{{ route('login.post') }}" method="POST" >
+                <form action="{{ route('login.post') }}" method="POST" data-errors="{{ json_encode($errors->all()) }}">
                     @csrf
                     <div class="form-floating-label">
                         <input type="email" 
