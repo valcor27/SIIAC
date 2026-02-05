@@ -1,6 +1,11 @@
 import { gsap } from 'gsap';
+import Toastify from 'toastify-js';
+import 'toastify-js/src/toastify.css';
 
 document.addEventListener('DOMContentLoaded', () => {
+
+
+
     gsap.from(".hero-content > *", {
         duration: 1,
         x: -50,
@@ -122,4 +127,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.addEventListener('resize', init);
     init();
+
+    // Toast notification example
+    Toastify({
+        text: "Event start time cannot be earlier than 8am",
+        duration: 3000,
+        close: true,
+        gravity: "bottom",
+        position: "right",
+        style: {
+            background: "#B94558",
+            borderRadius: "8px",
+            fontFamily: "Lexend, sans-serif"
+        }
+    }).showToast();
 });
