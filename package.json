@@ -19,6 +19,7 @@
         "@fontsource/lexend": "^5.2.11",
         "@fortawesome/fontawesome-free": "^7.1.0",
         "bootstrap": "5.3",
-        "fontawesome-free": "^1.0.4"
+        "fontawesome-free": "^1.0.4",
+        "gsap": "^3.14.2"
     }
 }

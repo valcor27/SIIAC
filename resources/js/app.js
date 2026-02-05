@@ -1,5 +1,7 @@
 import './bootstrap';
 
+
+
 // Google-style floating labels
 document.addEventListener('DOMContentLoaded', function() {
     // Get all form inputs with floating labels
