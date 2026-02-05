@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+<head >
+    <link rel="icon" type="image/png" href="{{ asset('images/logo_icon_white.png') }}">
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>SIIAC - Acceso Institucional</title>
@@ -13,9 +14,8 @@
             <canvas id="particleCanvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0;"></canvas>                
             <div class="d-flex flex-column justify-content-between p-5 hero-content w-100">
                 <div class="d-flex align-items-center gap-3 animate__animated animate__fadeIn">
-                    <div class="brand-logo shadow-lg">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
+                        <img src="{{ asset('images/logo_siiac.png') }}" alt="SIIAC Logo" class="img-fluid" style="width: 100px; height: 100px; border-radius: 10%;">
+                    
                     <span class="fs-2 fw-bold text-white tracking-tight">SIIAC</span>
                 </div>
                 
