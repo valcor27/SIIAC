@@ -3,6 +3,16 @@ import Toastify from 'toastify-js';
 import 'toastify-js/src/toastify.css';
 
 document.addEventListener('DOMContentLoaded', () => {
+    const togglePasswordBtn = document.getElementById('togglePassword');
+    const passwordInput = document.getElementById('password');
+    
+    togglePasswordBtn.addEventListener('click', () => {
+        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        const passwordIcon = togglePasswordBtn.firstElementChild;
+        passwordIcon.classList.toggle('fa-eye-slash');
+
+    });
 
 
 

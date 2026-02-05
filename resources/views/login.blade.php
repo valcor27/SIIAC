@@ -15,7 +15,6 @@
             <div class="d-flex flex-column justify-content-between p-5 hero-content w-100">
                 <div class="d-flex align-items-center gap-3 animate__animated animate__fadeIn">
                         <img src="{{ asset('images/logo_siiac.png') }}" alt="SIIAC Logo" class="img-fluid" style="width: 100px; height: 100px; border-radius: 10%;">
-                    
                     <span class="fs-2 fw-bold text-white tracking-tight">SIIAC</span>
                 </div>
                 
@@ -63,16 +62,26 @@
                         </label>
                     </div>
 
-                    <div class="form-floating-label">
+                    <div class="form-floating-label position-relative">
+                        
+
                         <input type="password" 
                                 class="form-control" 
                                 id="password"
                                 placeholder=" "
                                 required>
+
                         <label for="password" class="form-label">
+                         
                             <i class="fa-solid fa-lock me-2"></i>Contraseña
                         </label>
+                        
+                        <button type="button" id="togglePassword" class="btn position-absolute top-50 translate-middle-y pe-3 text-muted" style="border: none; background: none; right: 5px; z-index: 10; cursor: pointer;">
+                            <i class="fa-solid fa-eye"></i>
+                        </button>
+                      
                     </div>
+
 
                     <div class="d-flex justify-content-between align-items-center mb-4">
                         <div class="form-check">
