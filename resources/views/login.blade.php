@@ -90,7 +90,7 @@
                         </button>
                     </form>
 
-                    <div class="text-center mt-5 p-4 rounded-4" style="background-color: #F3F7F4;">
+                    <div class="text-center mt-5 p-4 rounded-4" >
                         <p class="text-muted small mb-0">
                             ¿Problemas de acceso? 
                             <a href="#" class="text-decoration-none fw-bold text-primary link-hover">
