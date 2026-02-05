@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <title>@yield('title', 'Mi primer proyecto')</title>
 
-    @vite(['resources/css/app.scss', 'resources/js/app.js'])
+    @if(request()->is('components'))
+        @vite(['resources/css/components.scss', 'resources/js/app.js'])
+    @else
+        @vite(['resources/css/app.scss', 'resources/js/app.js'])
+    @endif
 </head>
 <body>
 

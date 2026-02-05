@@ -23,6 +23,11 @@ Route::post('/logout', [LoginController::class, 'logout'])
 Route::get('/hash', function (){
     return view('hash');
 })->name('hash');
+
+Route::get('/components', function () {
+    return view('components');
+})->name('components');
+
 Route::get('/home', function () {
     return view('home');
 })->middleware('auth')->name('home');
