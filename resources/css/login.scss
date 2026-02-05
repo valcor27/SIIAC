@@ -1,0 +1,110 @@
+@import "variables";;
+
+body {
+    font-family: 'Lexend', sans-serif;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, $principal 0%, $color-adicional-7 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../../public/images/itsa.jpg') center/cover;
+    opacity: 0.15;
+    z-index: 0;
+}
+.brand-logo{
+    background: #830734;
+    color: white;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.login-card {
+    background: $color-adicional-1;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    padding: 3rem;
+}
+
+.form-control {
+    border-radius: 12px;
+    padding: 0.875rem 1rem;
+    border: 2px solid $color-adicional-5;
+    transition: all 0.3s ease;
+
+    &:focus {
+        border-color: $principal;
+        box-shadow: 0 0 0 0.2rem rgba($principal, 0.15);
+    }
+}
+
+.input-group-text {
+    border-radius: 12px;
+    border: 2px solid $color-adicional-5;
+    border-left: none;
+    background-color: $color-adicional-4;
+}
+
+.input-group .form-control {
+    border-right: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, $principal 0%, $color-adicional-7 100%);
+    border: none;
+    border-radius: 12px;
+    padding: 0.875rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba($principal, 0.4);
+    }
+}
+
+.brand-logo {
+    width: 50px;
+    height: 50px;
+    background: $color-adicional-1;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: $principal;
+}
+
+.feature-badge {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+}
+
+.link-hover {
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: $color-adicional-6 !important;
+    }
+}
+.text-resaltado {
+    color: $text-color-1 !important;
+    font-weight: 700;
+    /* Mantener tu color, añadir sombreado/contorno para legibilidad sobre fondo claro */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
+    -webkit-text-stroke: 0.25px rgba(0,0,0,0.06);
+}

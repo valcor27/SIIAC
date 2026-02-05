@@ -1,18 +1,126 @@
 ////////////////////////////////////
-// 2. Carga de variables propias ///
+// 1. Carga de variables y fuentes
 ////////////////////////////////////
 @import "variables";
+@import "@fortawesome/fontawesome-free/css/all.css";
+@import "@fontsource/lexend";
 
-////////////////////////////////////
-/// 2. Modificación de Bootstrap ///
-////////////////////////////////////
-
-$primary: $principal;
+// Mapeo de paleta institucional a variables de Bootstrap
+$primary:   $principal;
 $secondary: $secundario;
+$success:   $color-adicional-1;
+$info:      $color-adicional-2;
+$warning:   $color-adicional-3;
+$danger:    $color-adicional-4;
+$dark:      $color-adicional-6;
+$light:     $background-color-1;
 
-//////////////////////////// /////////
-/// 2. Carga del SCSS de Bootstrap ///
-//////////////////////////////////////
+
+////////////////////////////////////
+// 2. Carga de Bootstrap
+////////////////////////////////////
 @import "bootstrap/scss/bootstrap";
 
+////////////////////////////////////
+// 3. Clases de Utilidad y Overrides
+////////////////////////////////////
+.bg-light-1 { background-color: transparent; }
+.bg-dark    { background-color: $color-adicional-3; }
+.text-dark  { color: $principal; }
 
+.text-muted { color: $color-adicional-5; }
+.text-resaltado {
+    color: $text-color-1 ;
+    font-weight: 700;
+    /* Mantener el color definido en variables, pero mejorar contraste */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
+    -webkit-text-stroke: 0.25px rgba(0,0,0,0.06);
+}
+
+
+////////////////////////////////////
+// 4. Componentes (Login & Inputs)
+////////////////////////////////////
+
+// Contenedor específico del panel de acceso
+.login-panel {
+    background-color: $light !important; 
+
+    .form-control {
+        background-color: $light !important;
+        border: 1px solid $color-adicional-5;
+        border-radius: 12px;
+        position: relative;
+        z-index: 1;
+        box-shadow: none;
+    }
+
+    .form-label {
+        background-color: $light !important;
+        padding: 0 0.3rem;
+        position: relative;
+        z-index: 2;
+        line-height: 1;
+        margin: 0;
+    }
+
+    .input-group .input-group-text {
+        background-color: $light !important;
+        border: 2px solid $color-adicional-5;
+        border-left: none;
+        z-index: 1;
+    }
+}
+
+// Lógica base para etiquetas flotantes (Google-style)
+%floating-label-base {
+    position: relative;
+    margin-bottom: 1.5rem;
+
+    .form-label {
+        position: absolute;
+        top: 50%;
+        left: 1rem;
+        transform: translateY(-50%);
+        transition: all 0.3s ease;
+        color: $color-adicional-5;
+        font-weight: 500;
+        pointer-events: none;
+        margin-right: 0.1rem;
+        padding: 0 0.25rem;
+    }
+
+    .form-control {
+        padding-top: 1.5rem;
+        padding-bottom: 0.875rem;
+        background-color: transparent;
+
+        &:focus ~ .form-label,
+        &.has-value ~ .form-label {
+            top: 0.1rem;
+            font-size: 0.75rem;
+            color: $principal;
+            font-weight: 600;
+        }
+
+        &:focus {
+            border-color: $principal;
+            box-shadow: 0 0 0 0.2rem rgba($principal, 0.15);
+        }
+    }
+}
+
+.form-floating-label {
+    @extend %floating-label-base;
+    .form-label { z-index: 1; }
+}
+
+.input-group-floating {
+    @extend %floating-label-base;
+    
+    .form-label {
+        z-index: 2;
+        padding: 0 0.25rem;
+        background-color: $light !important;
+    }
+}
