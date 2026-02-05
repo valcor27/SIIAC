@@ -91,7 +91,7 @@ $light:     $background-color-1;
     }
 
     .form-control {
-        padding-top: 1.5rem;
+        padding-top: 1rem;
         padding-bottom: 0.875rem;
         background-color: transparent;
 
@@ -110,24 +110,7 @@ $light:     $background-color-1;
     }
 }
 
-    // Toastify override: place close "X" on the left
-    /* Toastify uses .toastify (container) and .toast-close (close button) */
-    .toastify {
-        display: flex;
-        align-items: center;
-    }
-
-    .toast-close {
-        order: -1; /* move before the message */
-        margin-right: 0.6rem;
-        margin-left: 0;
-        padding: 0 6px;
-    }
-
-    /* ensure message flows correctly when close is left */
-    .toastify > span, .toastify > a {
-        display: inline-block;
-    }
+ 
 
 .form-floating-label {
     @extend %floating-label-base;
