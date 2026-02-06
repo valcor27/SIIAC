@@ -168,7 +168,7 @@ body {
 }
 
 .glass-card {
-    background: rgba(255, 255, 255, 0.03);
+    background: transparent;
     transition: background 0.2s;
 }
 
@@ -244,7 +244,6 @@ $anim-curve: cubic-bezier(0.25, 1, 0.5, 1); // Curva muy suave al final
     z-index: 100;
 }
 
-
 // 1. HEADER DEL SIDEBAR
 .sidebar-header {
     height: 60px; // Altura fija ayuda a la estabilidad
@@ -298,11 +297,12 @@ $anim-curve: cubic-bezier(0.25, 1, 0.5, 1); // Curva muy suave al final
 // 3. TARJETA DE USUARIO
 .user-card {
     display: flex;
-    
+
     padding: 12px 12px 12px 12px; // Un poco diferente, lo ajustaremos en colapso si es necesario
     margin: auto;
     white-space: nowrap;
     overflow: hidden;
+    background: rgba(255, 255, 255, 0.03);
 }
 
 /* --- ELEMENTOS FIJOS (ICONOS/LOGOS) --- */
@@ -331,8 +331,8 @@ $anim-curve: cubic-bezier(0.25, 1, 0.5, 1); // Curva muy suave al final
 /* --- ELEMENTOS QUE DESAPARECEN (TEXTOS) --- */
 .sidebar-text {
     opacity: 1;
-    margin-left: 12px; 
-    
+    margin-left: 12px;
+
     flex-grow: 1;
     transition:
         opacity ($anim-duration * 0.4) ease-out,
@@ -373,11 +373,11 @@ $anim-curve: cubic-bezier(0.25, 1, 0.5, 1); // Curva muy suave al final
     }
 
     .user-card {
-    justify-content: center;
-        
-    display: flex;
-    
-    padding: 12px 12px; 
+        justify-content: center;
+        background: transparent;
 
+        display: flex;
+
+        padding: 12px 12px;
     }
 }
