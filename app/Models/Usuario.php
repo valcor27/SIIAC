@@ -20,6 +20,8 @@ class Usuario extends Authenticatable
         'password_hash',
         'estatus',
         'niveles_usuarios_id_nivel_usuario',
+        'primer_apellido',
+        'segundo_apellido'
     ];
 
     /**
