@@ -1,14 +1,69 @@
-import { gsap } from 'gsap';
-import Toastify from 'toastify-js';
-import 'toastify-js/src/toastify.css';
+import { gsap } from "gsap";
+import Toastify from "toastify-js";
+import "toastify-js/src/toastify.css";
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
+    // Animación de palabras en bucle
+    const wordList = document.querySelector("[data-looping-words]");
+    if (wordList) {
+        const words = Array.from(wordList.children);
+        const totalWords = words.length;
+        const wordHeight = 100 / totalWords; // Offset as a percentage
+        const edgeElement = document.querySelector("[data-looping-words-selector]");
+        let currentIndex = 0;
+
+        function updateEdgeWidth() {
+            const centerIndex = (currentIndex + 1) % totalWords;
+            const centerWord = words[centerIndex];
+            const centerWordWidth = centerWord.getBoundingClientRect().width;
+            const listWidth = wordList.getBoundingClientRect().width;
+            const percentageWidth = (centerWordWidth / listWidth) * 100;
+
+            gsap.to(edgeElement, {
+                width: `${percentageWidth}%`,
+                duration: 1,
+                ease: "Expo.easeOut",
+            });
+        }
+
+        function moveWords() {
+            currentIndex++;
+
+            gsap.to(wordList, {
+                yPercent: -wordHeight * currentIndex,
+                duration: 1.2,
+                ease: "elastic.out(1, 0.85)",
+                onStart: updateEdgeWidth,
+                onComplete: function () {
+                    if (currentIndex >= totalWords - 1) {
+                        wordList.appendChild(wordList.children[0]);
+                        currentIndex--;
+                        gsap.set(wordList, {
+                            yPercent: -wordHeight * currentIndex,
+                        });
+                        words.push(words.shift());
+                    }
+                },
+            });
+        }
+
+        updateEdgeWidth();
+
+        // Timeline para repetir la animación cada 3.5 segundos
+        gsap.timeline({ repeat: -1, delay: 1 })
+            .call(moveWords)
+            .to({}, { duration: 2.5 })
+            .repeat(-1);
+    }
+
+
+
     // Mostrar errores con Toastify
-    const loginForm = document.querySelector('form');
-    const errors = JSON.parse(loginForm.getAttribute('data-errors') || '[]');
-    
+    const loginForm = document.querySelector("form");
+    const errors = JSON.parse(loginForm.getAttribute("data-errors") || "[]");
+
     if (errors.length > 0) {
-        errors.forEach(error => {
+        errors.forEach((error) => {
             Toastify({
                 text: "Error en la autenticación: " + error,
                 duration: 4000,
@@ -18,46 +73,46 @@ document.addEventListener('DOMContentLoaded', () => {
                 style: {
                     background: "#B94558",
                     borderRadius: "8px",
-                    fontFamily: "Lexend, sans-serif"
-                }
+                    fontFamily: "Lexend, sans-serif",
+                },
             }).showToast();
         });
     }
 
-    const togglePasswordBtn = document.getElementById('togglePassword');
-    const passwordInput = document.getElementById('password');
-    
-    togglePasswordBtn.addEventListener('click', () => {
-        const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-        passwordInput.setAttribute('type', type);
+    const togglePasswordBtn = document.getElementById("togglePassword");
+    const passwordInput = document.getElementById("password");
+
+    togglePasswordBtn.addEventListener("click", () => {
+        const type =
+            passwordInput.getAttribute("type") === "password"
+                ? "text"
+                : "password";
+        passwordInput.setAttribute("type", type);
         const passwordIcon = togglePasswordBtn.firstElementChild;
-        passwordIcon.classList.toggle('fa-eye-slash');
-
+        passwordIcon.classList.toggle("fa-eye-slash");
     });
-
-
 
     gsap.from(".hero-content > *", {
         duration: 1,
         x: -50,
         opacity: 0,
         stagger: 0.2,
-        ease: "back.out(1.7)"
-    }); 
-    const canvas = document.getElementById('particleCanvas');
+        ease: "back.out(1.7)",
+    });
+    const canvas = document.getElementById("particleCanvas");
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     let particles = [];
     let mouse = { x: null, y: null, radius: 150 };
     const dpr = window.devicePixelRatio || 1; // Factor para nitidez
 
     const COLORS = {
-        primary: '#830734', // $principal
-        accent: '#B94558',  // $color-adicional-6
+        primary: "#830734", // $principal
+        accent: "#B94558", // $color-adicional-6
     };
-    
-    const PARTICLE_COUNT = 150; 
+
+    const PARTICLE_COUNT = 150;
     const CONNECTION_DISTANCE = 120;
 
     class Particle {
@@ -66,8 +121,8 @@ document.addEventListener('DOMContentLoaded', () => {
             this.y = y;
             this.baseX = x;
             this.baseY = y;
-            this.size = (Math.random() * 2 + 1);
-            this.density = (Math.random() * 20) + 2;
+            this.size = Math.random() * 2 + 1;
+            this.density = Math.random() * 20 + 2;
             this.offset = Math.random() * Math.PI * 2;
             this.color = COLORS.primary;
         }
@@ -85,9 +140,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (mouse.x !== null) {
                 let dx = mouse.x - this.x;
-                let dy = (mouse.y - canvas.getBoundingClientRect().top) - this.y;
+                let dy = mouse.y - canvas.getBoundingClientRect().top - this.y;
                 let distance = Math.sqrt(dx * dx + dy * dy);
-                
+
                 if (distance < mouse.radius) {
                     let force = (mouse.radius - distance) / mouse.radius;
                     this.x -= (dx / distance) * force * this.density * 0.6;
@@ -102,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 this.y += (targetY - this.y) * 0.05;
                 this.x += (this.baseX - this.x) * 0.05;
             }
-            this.size = (Math.abs(Math.sin(time + this.offset)) * 1.5) + 1;
+            this.size = Math.abs(Math.sin(time + this.offset)) * 1.5 + 1;
         }
     }
 
@@ -114,7 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let distance = Math.sqrt(dx * dx + dy * dy);
 
                 if (distance < CONNECTION_DISTANCE) {
-                    let opacity = 1 - (distance / CONNECTION_DISTANCE);
+                    let opacity = 1 - distance / CONNECTION_DISTANCE;
                     ctx.strokeStyle = `rgba(131, 7, 52, ${opacity * 0.2})`;
                     ctx.lineWidth = 1;
                     ctx.beginPath();
@@ -137,10 +192,12 @@ document.addEventListener('DOMContentLoaded', () => {
         canvas.style.width = `${width}px`;
         canvas.style.height = `${height}px`;
         ctx.scale(dpr, dpr);
-        
+
         particles = [];
         for (let i = 0; i < PARTICLE_COUNT; i++) {
-            particles.push(new Particle(Math.random() * width, Math.random() * height));
+            particles.push(
+                new Particle(Math.random() * width, Math.random() * height),
+            );
         }
     }
 
@@ -148,14 +205,17 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.clearRect(0, 0, canvas.width / dpr, canvas.height / dpr);
         const time = Date.now() * 0.0008;
         connect();
-        particles.forEach(p => { p.update(time); p.draw(); });
+        particles.forEach((p) => {
+            p.update(time);
+            p.draw();
+        });
     });
 
-    window.addEventListener('mousemove', (e) => {
+    window.addEventListener("mousemove", (e) => {
         mouse.x = e.clientX;
         mouse.y = e.clientY;
     });
 
-    window.addEventListener('resize', init);
+    window.addEventListener("resize", init);
     init();
 });

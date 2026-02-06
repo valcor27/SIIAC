@@ -23,7 +23,17 @@
                 
                 <div class="py-5">
                     <h1 class="display-3 fw-bold text-white mb-4 mt-5" style="line-height: 1.1;">
-                        <span class="text-resaltado">Tu portal académico</span> <span class="text-white">Reimaginado</span>
+                        <span class="text-resaltado">Tu portal académico</span>
+                        <div style="position: relative; display: inline-block; margin-left: 0.5rem; overflow: hidden; height: 1.5em; line-height: 1.5em;">
+                            <div data-looping-words style="display: flex; flex-direction: column; position: relative;">
+                                <span class="text-white" style="height: 1.5em; display: flex; align-items: center; white-space: nowrap;">Reimaginado</span>
+                                <span class="text-white" style="height: 1.5em; display: flex; align-items: center; white-space: nowrap;">Innovador</span>
+                                <span class="text-white" style="height: 1.5em; display: flex; align-items: center; white-space: nowrap;">Moderno</span>
+                                <span class="text-white" style="height: 1.5em; display: flex; align-items: center; white-space: nowrap;">Eficiente</span>
+                                <span class="text-white" style="height: 1.5em; display: flex; align-items: center; white-space: nowrap;">Integral</span>
+                            </div>
+                            <div data-looping-words-selector style="position: absolute; bottom: -5px; left: 0; height: 3px; background: linear-gradient(90deg, #5B63F5 0%, transparent 100%); border-radius: 2px;"></div>
+                        </div>
                     </h1>
                     <p class="fs-5 text-white mb-5" style="opacity: 0.85; max-width: 500px;">
                         Acceso Institucional Seguro para la gestión académica de estudiantes, docentes y personal.
