@@ -12,9 +12,10 @@
 </head>
 
 <body class="bg-dark text-light">
-  
+
 
   <div class="d-flex w-100 h-100">
+    @section('sidebar')
 
     <aside id="sidebar" class="glass-panel sidebar-container collapsed d-flex flex-column flex-shrink-0 z-2">
 
@@ -58,8 +59,9 @@
         </div>
       </div>
     </aside>
+    @show
     <div class="d-flex flex-column flex-grow-1" style="max-height: 100vh; overflow-y: auto;">
-
+      @section('navbar')
       <header
         class="glass-panel m-3 mx-4 p-3 rounded-4 sticky-top z-3 d-flex align-items-center justify-content-between">
         <div class="flex-grow-1" style="max-width: 400px;">
@@ -78,13 +80,16 @@
           </button>
         </div>
       </header>
+      @show
 
       <main class="px-4 pb-4">
         @yield('content')
       </main>
 
     </div>
+
   </div>
+
 
 
 </body>
