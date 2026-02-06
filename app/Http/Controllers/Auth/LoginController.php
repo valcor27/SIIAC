@@ -46,7 +46,7 @@ class LoginController extends Controller
         Auth::login($usuario);
 
         // 5️⃣ Redirección temporal
-        return redirect('/home');
+        return redirect('/welcome');
     }
 
     /**
