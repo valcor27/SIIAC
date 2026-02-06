@@ -101,15 +101,17 @@
                         </button>
                       
                     </div>
-
-
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <div class="form-check">
+                        <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+                        <label class="form-check-label" for="switchCheckDefault">Recordarme</label>
+                        </div>
+                        <!--<div class="form-check">
                             <input class="form-check-input" type="checkbox" id="remember">
                             <label class="form-check-label text-muted small" for="remember">
                                 Recordarme
                             </label>
-                        </div>
+                        </div>-->
                         <a href="#" class="text-decoration-none small fw-semibold link-hover text-primary">
                             ¿Olvidaste tu contraseña?
                         </a>
