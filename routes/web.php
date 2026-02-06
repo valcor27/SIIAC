@@ -16,7 +16,7 @@ Route::get('/login', [LoginController::class, 'showLogin'])
 
 Route::post('/login', [LoginController::class, 'login'])
     ->name('login.post');
-    
+
 Route::post('/logout', [LoginController::class, 'logout'])
     ->name('logout');
 
