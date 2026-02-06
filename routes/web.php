@@ -28,6 +28,10 @@ Route::get('/components', function () {
     return view('components');
 })->name('components');
 
+Route::get('welcome', function () {
+    return view('welcome');
+})->name('welcome');
+
 Route::get('/home', function () {
     return view('home');
 })->middleware('auth')->name('home');

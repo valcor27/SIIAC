@@ -6,15 +6,14 @@
 @import "@fontsource/lexend";
 
 // Mapeo de paleta institucional a variables de Bootstrap
-$primary:   $principal;
+$primary: $principal;
 $secondary: $color-adicional-6;
-$success:   $color-adicional-2;
-$info:      $color-adicional-5;
-$warning:   $color-adicional-3;
-$danger:    $principal;
-$dark:      $color-adicional-3;
-$light:     $background-color-1;
-
+$success: $color-adicional-2;
+$info: $color-adicional-5;
+$warning: $color-adicional-3;
+$danger: $principal;
+$dark: $color-adicional-3;
+$light: $background-color-1;
 
 ////////////////////////////////////
 // 2. Carga de Bootstrap
@@ -24,19 +23,23 @@ $light:     $background-color-1;
 ////////////////////////////////////
 // 3. Clases de Utilidad y Overrides
 ////////////////////////////////////
-.bg-light-1 { background-color: transparent; }
-.bg-dark    { background-color: $color-adicional-3; }
-.text-dark  { color: $principal; }
-
-.text-muted { color: $color-adicional-5; }
-.text-resaltado {
-    color: $text-color-1 ;
-    font-weight: 700;
-    /* Mantener el color definido en variables, pero mejorar contraste */
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
-    -webkit-text-stroke: 0.25px rgba(0,0,0,0.06);
+.bg-light-1 {
+    background-color: transparent;
+}
+.bg-dark {
+    background-color: $color-adicional-3;
+}
+.text-dark {
+    color: $principal;
 }
 
+.text-muted {
+    color: $color-adicional-5;
+}
+.text-resaltado {
+    color: $text-color-1;
+    /* Mantener el color definido en variables, pero mejorar contraste */
+}
 
 ////////////////////////////////////
 // 4. Componentes (Login & Inputs)
@@ -44,7 +47,7 @@ $light:     $background-color-1;
 
 // Contenedor específico del panel de acceso
 .login-panel {
-    background-color: $light !important; 
+    background-color: $light !important;
 
     .form-control {
         background-color: $light !important;
@@ -110,19 +113,271 @@ $light:     $background-color-1;
     }
 }
 
- 
-
 .form-floating-label {
     @extend %floating-label-base;
-    .form-label { z-index: 1; }
+    .form-label {
+        z-index: 1;
+    }
 }
 
 .input-group-floating {
     @extend %floating-label-base;
-    
+
     .form-label {
         z-index: 2;
         padding: 0 0.25rem;
         background-color: $light !important;
+    }
+}
+
+body {
+    font-family:
+        "Lexend",
+        system-ui,
+        -apple-system,
+        sans-serif;
+    min-height: 100vh;
+    overflow: hidden;
+}
+////////////////////////////////////
+// Estilos de Paneles de Cristal y Sidebar
+////////////////////////////////////
+/* Panel de Cristal usando --bs-dark-rgb (definido en tu SCSS como $color-adicional-3) */
+.glass-panel {
+    background: rgba($color-adicional-3, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(203, 103, 103, 0.08);
+}
+
+.glass-input {
+    background: rgba(0, 0, 0, 0.2);
+    border: none;
+    color: $text-color-1; /* Usa $background-color-1 de tu SCSS */
+    &::placeholder {
+        color: rgba($text-color-1, 0.6);
+        opacity: 1;
+    }
+}
+
+.glass-input:focus {
+    background: rgba(0, 0, 0, 0.3);
+    color: $text-color-1;
+    box-shadow: none;
+    outline: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    transition: background 0.2s;
+}
+
+.glass-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.logo-box {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: linear-gradient(
+        135deg,
+        var(--bs-primary) 0%,
+        var(--bs-secondary) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px 0 rgba(var(--bs-primary-rgb), 0.3);
+}
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--bs-secondary); /* Usa color secundario del SCSS */
+    pointer-events: none;
+}
+
+.btn-icon {
+    color: var(--bs-secondary);
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.2s;
+    background: transparent;
+    border: none;
+}
+
+.btn-icon:hover {
+    color: var(--bs-light);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+/* =========================================
+   SIDEBAR & TRANSICIONES (Optimizado)
+   ========================================= */
+
+// Variables de configuración
+$sidebar-width-expanded: 280px;
+// 88px coincide con el padding de tus elementos (24px + 40px icono + 24px)
+$sidebar-width-collapsed: 88px;
+$anim-duration: 0.5s; // Un poco más lento para mayor suavidad
+$anim-curve: cubic-bezier(0.25, 1, 0.5, 1); // Curva muy suave al final
+
+.sidebar-container {
+    width: $sidebar-width-expanded;
+    height: calc(100vh - 16px);
+    margin: 8px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; // Esencial para recortar contenido
+    transition: width $anim-duration $anim-curve;
+    z-index: 100;
+}
+
+
+// 1. HEADER DEL SIDEBAR
+.sidebar-header {
+    height: 60px; // Altura fija ayuda a la estabilidad
+    display: flex;
+    align-items: center;
+    // Padding: bootstrap p-4 es 1.5rem (24px).
+    // 24px izq + 40px logo + espacio...
+    padding: 0 24px;
+    white-space: nowrap;
+}
+
+// 2. ITEMS DE NAVEGACIÓN
+.nav-link {
+    color: var(--bs-secondary);
+    display: flex;
+    align-items: center;
+    height: 50px; // Altura consistente
+    padding: 0 24px; // MISMO padding que el header para alineación vertical perfecta
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+    white-space: nowrap; // Evita saltos de línea
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link:hover {
+    color: var(--bs-light);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-link.active {
+    background: rgba(var(--bs-primary-rgb), 0.15);
+    color: var(--bs-light);
+    // Borde izquierdo posicionado absolutamente para no afectar el layout
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 10%;
+        height: 80%;
+        width: 3px;
+        background-color: var(--bs-primary);
+        border-radius: 0 3px 3px 0;
+    }
+}
+
+// 3. TARJETA DE USUARIO
+.user-card {
+    display: flex;
+    
+    padding: 12px 12px 12px 12px; // Un poco diferente, lo ajustaremos en colapso si es necesario
+    margin: auto;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* --- ELEMENTOS FIJOS (ICONOS/LOGOS) --- */
+/* Estos elementos NUNCA deben cambiar de tamaño ni margen durante la animación */
+.logo-box,
+.nav-link i,
+.rounded-circle {
+    flex-shrink: 0; // Prohibido encogerse
+    width: 40px; // Ancho fijo estricto
+    height: 40px; // Alto fijo estricto
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.rounded-circle {
+    margin: 5px;
+}
+
+// Ajuste específico para el icono de FontAwesome dentro del link
+.nav-link i {
+    font-size: 1.2rem;
+    width: 40px; // El contenedor del icono mide 40px, igual que el logo
+}
+
+/* --- ELEMENTOS QUE DESAPARECEN (TEXTOS) --- */
+.sidebar-text {
+    opacity: 1;
+    margin-left: 12px; 
+    
+    flex-grow: 1;
+    transition:
+        opacity ($anim-duration * 0.4) ease-out,
+        // Desvanece rápido
+        margin-left $anim-duration $anim-curve; // Se mueve suave
+}
+
+.sidebar-text-header {
+    padding-left: 24px; // Alineado con el resto
+    transition: opacity $anim-duration ease;
+    white-space: nowrap;
+    opacity: 1;
+    display: block;
+}
+
+/* =========================================
+   ESTADO COLAPSADO
+   ========================================= */
+.sidebar-container.collapsed {
+    width: $sidebar-width-collapsed;
+
+    // Ocultar textos
+    .sidebar-text {
+        opacity: 0;
+        margin-left: 0; // Elimina el espacio entre icono y texto suavemente
+        pointer-events: none; // Evita interacción fantasma
+    }
+
+    // Ocultar cabeceras de sección
+    .sidebar-text-header {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    // Ocultar flecha chevron
+    .fa-chevron-up {
+        display: none; // O opacity: 0 si quieres animarlo
+    }
+
+    .user-card {
+    justify-content: center;
+        
+    display: flex;
+    
+    padding: 12px 12px; 
+
     }
 }
