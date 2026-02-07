@@ -257,7 +257,7 @@ $anim-curve: cubic-bezier(0.25, 1, 0.5, 1); // Curva muy suave al final
 
 // 2. ITEMS DE NAVEGACIÓN
 .nav-link {
-    color: var(--bs-secondary);
+    color: $text-color-1;
     display: flex;
     align-items: center;
     height: 50px; // Altura consistente
@@ -280,7 +280,7 @@ $anim-curve: cubic-bezier(0.25, 1, 0.5, 1); // Curva muy suave al final
 
 .nav-link.active {
     background: rgba(var(--bs-primary-rgb), 0.15);
-    color: var(--bs-light);
+    color: $text-color-1;
     // Borde izquierdo posicionado absolutamente para no afectar el layout
     &::before {
         content: "";

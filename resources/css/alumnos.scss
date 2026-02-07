@@ -1,0 +1,177 @@
+@import "variables";
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Espacio entre tarjetas */
+    padding: 20px;
+}
+
+/* Estilos base de la tarjeta */
+.student-card {
+    background-color: $gray-1;
+    border: none;
+    border-radius: 16px;
+    color: $color-adicional-1;
+    transition: transform 0.2s;
+    
+    /* --- NUEVO: Configuración de tamaño y estructura --- */
+    width: 280px;          /* Ancho fijo: evita que cambie de tamaño */
+    min-height: 320px;     /* Altura mínima consistente */
+    position: relative;    /* Necesario para ubicar la curva */
+    overflow: hidden;      /* Corta la curva para que no salga de la tarjeta */
+    display: flex;         /* Ayuda a centrar el contenido */
+    flex-direction: column;
+    align-items: center;   /* Centra todo horizontalmente */
+    padding-bottom: 20px;  /* Espacio abajo */
+    margin: 10px;          /* Espacio externo por si no usas gap */
+}
+
+.student-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -20%;
+    width: 140%;
+    height: 110px;
+    border-radius: 0 0 50% 50%;
+    z-index: 0;
+
+    /* 1. EL COLOR BASE (Se mantiene tu variable de tema) */
+    background-color: var(--accent-color);
+
+    /* 2. EL PATRÓN (NUEVO) */
+    /* Usamos una imagen SVG incrustada de puntos blancos semitransparentes (opacity 0.15) */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='2.5' fill='rgba(255,255,255,0.15)'/%3E%3C/svg%3E");
+
+    /* Asegura que el patrón se repita suavemente */
+    background-size: 20px 20px;
+    background-repeat: repeat;
+}
+
+.student-card:hover {
+    transform: translateY(-5px);
+}
+
+/* --- NUEVO: La Curva Superior (Header) --- */
+.student-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -20%;            /* La hacemos más ancha que la tarjeta */
+    width: 140%;           /* para que la curva sea más suave */
+    height: 110px;         /* Altura del fondo de color */
+    background-color: var(--accent-color); /* Mantiene tu lógica de temas */
+    border-radius: 0 0 50% 50%; /* Esto crea la forma de "U" o curva */
+    z-index: 0;            /* Se queda al fondo */
+}
+
+/* Imagen de perfil */
+.student-avatar {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    
+    /* --- ACTUALIZADO: Posicionamiento sobre la curva --- */
+    position: relative;    /* Para que esté encima del fondo curvo */
+    z-index: 1;            /* Asegura que se vea sobre la curva */
+    margin-top: 55px;      /* Empuja la imagen para alinearla con la curva */
+    
+    /* Mantenemos tus bordes pero ajustamos para contraste */
+    border: 4px solid $gray-1; /* Truco: borde del color de la tarjeta para separar visualmente */
+    border-radius: 50%;        /* Aseguramos que sea redonda */
+    background-color: $color-adicional-3;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2); /* Un poco de sombra para profundidad */
+}
+
+/* Indicador de estado */
+.status-dot {
+    width: 14px;
+    height: 14px;
+    background-color: $off-green;
+    border: 2px solid $gray-1; /* Mejor contraste con el fondo de la tarjeta */
+    position: absolute;
+    /* Ajustamos posición relativo al avatar */
+    top: 5px; 
+    right: 5px;
+    border-radius: 50%;
+    z-index: 2;
+}
+
+/* Tipografía (Alineación centrada) */
+.student-name {
+    color: rgba($color-adicional-1, 0.9);
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-top: 10px;      /* Espacio tras el avatar */
+    margin-bottom: 2px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.student-id {
+    color: rgba($color-adicional-1, 0.7);
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+
+/* Sección de estadísticas (Grade, GPA, Class) */
+.stat-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    color: $color-adicional-5;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+
+.stat-value {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* Botones personalizados */
+.btn-custom-edit {
+    border: 1px solid $secundario;
+    background-color: rgba($color-adicional-1, 0.05);
+    color: $color-adicional-5;
+
+    font-size: 0.85rem;
+    transition: all 0.3s;
+}
+
+.btn-custom-edit:hover {
+    
+    color: $color-adicional-1;
+    background-color: $secundario;
+    border-color: $color-adicional-1;
+    
+}
+
+.btn-custom-icon {
+    border: 1px solid $secundario;
+    background-color: rgba($color-adicional-1, 0.05);
+    color: $color-adicional-5;
+}
+
+.btn-custom-icon:hover {
+    border-color: var(--accent-color);
+    background-color: var(--accent-color);
+    
+    color: $color-adicional-1;
+}
+
+/* TEMAS DE COLORES (Para cambiar rojo, naranja, etc.) */
+.theme-red {
+    --accent-color: #{$principal};
+}
+.theme-orange {
+    --accent-color: #{$color-adicional-2};
+}
+.theme-blue {
+    --accent-color: #{$color-adicional-3};
+}

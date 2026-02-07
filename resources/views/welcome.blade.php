@@ -7,7 +7,7 @@
 @section('content')
 
     <div class="container mt-4">
-        <div class="row">
+        <div class="row"> 
         <div class="col-12">
             <div class="glass-card p-4 rounded-4">
             <h2 class="mb-4">Bienvenido a SIIAC</h2>

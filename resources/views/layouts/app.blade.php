@@ -7,7 +7,7 @@
   <title>@yield('title', 'SIIAC')</title>
   <link rel="icon" type="image/png" href="{{ asset('images/logo_icon_white.png') }}">
 
-  @vite(['resources/css/app.scss', 'resources/js/app.js'])
+  @vite(entrypoints: ['resources/css/app.scss', 'resources/js/app.js', 'resources/css/alumnos.scss'])
 
 </head>
 
