@@ -348,6 +348,10 @@ $anim-curve: cubic-bezier(0.25, 1, 0.5, 1); // Curva muy suave al final
     display: block;
 }
 
+.dropdown-toggle::after {
+    display: none; // Oculta la flecha predeterminada de Bootstrap
+}
+
 /* =========================================
    ESTADO COLAPSADO
    ========================================= */

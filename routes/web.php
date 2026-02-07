@@ -28,14 +28,10 @@ Route::get('/components', function () {
     return view('components');
 })->name('components');
 
-Route::get('welcome', function () {
+/*Route::get('welcome', function () {
     return view('welcome');
-})->name('welcome');
+})->name('welcome');*/
 
 Route::get('/home', function () {
     return view('home');
 })->middleware('auth')->name('home');
-
-Route::get('alumnos', function () {
-    return view('cruds.alumnos');
-})->middleware('auth')->name('alumnos');

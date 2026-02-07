@@ -28,7 +28,7 @@
                             <div data-looping-words style="display: flex; flex-direction: column; position: relative;">
                                 <span class="text-white" style="height: 1.5em; display: flex; align-items: center; white-space: nowrap;">Reimaginado</span>
                                 <span class="text-white" style="height: 1.5em; display: flex; align-items: center; white-space: nowrap;">Innovador</span>
-                                <span class="text-white" style="height: 1.5em; display: flex; align-items: center; white-space: nowrap;">Moderno</span>
+                                <span class="text-white" style="height: 1.5em; display: flex; align-items: center; white-space: nowrap;">Inteligente</span>
                                 <span class="text-white" style="height: 1.5em; display: flex; align-items: center; white-space: nowrap;">Eficiente</span>
                                 <span class="text-white" style="height: 1.5em; display: flex; align-items: center; white-space: nowrap;">Integral</span>
                             </div>
@@ -43,7 +43,10 @@
                 </div>
                 
                 <div class="text-white-50 small">
-                    © 2026 Sistema Integral de Inscripción y Administración Curricular.
+                    Sistema Integral de Inscripción y Administración Curricular.
+                </div>
+                <div class="text-white-50 small">
+                    © 2026 JSVC - DAAS - Equipo de Desarrollo SIIAC.
                 </div>
             </div>
         </div>
@@ -58,7 +61,7 @@
                 </div>
 
                 <div class="login-header mb-5">
-                    <h2 class="display-6 fw-bold mb-2 text-dark">Bienvenido</h2>
+                    <h2 class="display-6 fw-bold mb-2 text-primary">Bienvenido</h2>
                     <p class="text-muted">Por favor, introduce tus credenciales institucionales.</p>
                 </div>
 
@@ -98,15 +101,17 @@
                         </button>
                       
                     </div>
-
-
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <div class="form-check">
+                        <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+                        <label class="form-check-label" for="switchCheckDefault">Recordarme</label>
+                        </div>
+                        <!--<div class="form-check">
                             <input class="form-check-input" type="checkbox" id="remember">
                             <label class="form-check-label text-muted small" for="remember">
                                 Recordarme
                             </label>
-                        </div>
+                        </div>-->
                         <a href="#" class="text-decoration-none small fw-semibold link-hover text-primary">
                             ¿Olvidaste tu contraseña?
                         </a>

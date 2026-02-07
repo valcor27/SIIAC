@@ -47,16 +47,28 @@
       </div>
 
       <div class="p-3 border-top border-light border-opacity-10">
-        <div class="glass-card rounded-3 cursor-pointer user-card">
+        <div class="glass-card rounded-3 cursor-pointer user-card dropdown-toggle d-flex align-items-center" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
           <div class="rounded-circle border border-white border-opacity-10"
-            style="width: 40px; height: 40px; background-image: url('{{ Avatar::create(Auth::user()->name ?? 'Invitado')->toBase64() }}'); background-size: cover;">
+            style="width: 40px; height: 40px; background-image: url('{{ Avatar::create(Auth::user()->nombre ?? 'Invitado')->toBase64() }}'); background-size: cover;">
           </div>
           <div class="sidebar-text overflow-hidden">
-            <p class="mb-0 small fw-semibold text-truncate">{{ Auth::user()->name ?? 'Invitado' }}</p>
-            <p class="mb-0 small text-resaltado text-truncate" style="font-size: 0.75rem;">Product Designer</p>
+            <p class="mb-0 small fw-semibold text-truncate">{{ Auth::user()->nombre ?? 'Invitado' }}</p>
+            <p class="mb-0 small text-resaltado text-truncate" style="font-size: 0.75rem;">{{ Auth::user()->primero_apellido ?? 'Apepat' }} {{ Auth::user()->segundo_apellido ?? 'Apemat' }}</p>
           </div>
           <i class="fa-solid fa-chevron-up text-resaltado sidebar-text ms-2"></i>
         </div>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+          <li><a class="dropdown-item" href="#">Perfil</a></li>
+          <li><a class="dropdown-item" href="#">Configuración</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li>
+            <form method="POST" action="{{ route('logout') }}">
+              @csrf
+              <button type="submit" class="dropdown-item">Cerrar sesión</button>
+            </form>
+          </li>
       </div>
     </aside>
     @show
